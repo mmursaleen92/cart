@@ -33,7 +33,9 @@
     	{
     		// encrypt password for more security
     		$password = md5($password);
-    		$password = sha1($password);
+			$password = sha1($password);
+			// $query = $conn->prepare("INSERT INTO member(name,email,password,timee) VALUES (:name,:email,:password,:tim)");
+			// $query->execute(['name' => $name],['email' => $email],['password' => $password],['tim' => now()]);
     		$query = "INSERT INTO member(name,email,password,timee) ";
     		$query .="VALUES('$name','$email','$password',now())";
     		$run = mysqli_query($conn,$query);
