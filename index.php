@@ -40,7 +40,7 @@
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="email" required="required" type="text" placeholder="mymail@mail.com"/>
+                                    <input id="username" name="email" required="required" type="email" placeholder="mymail@mail.com"/>
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>

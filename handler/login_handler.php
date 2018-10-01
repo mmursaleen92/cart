@@ -4,10 +4,13 @@
     if(isset($_POST['login']))
     {
     	$email = $_POST['email'];
-    	$password = $_POST['password'];
+        $password = $_POST['password'];
+                 // authenticate email
+        $email = filter_var($email,FILTER_SANITIZE_EMAIL);
         // echo "$email <br /> $password";
         if(empty($email))
         {
+          // echo "$email";exit;
             echo 'E-mail Not entered';
             exit;
         }
@@ -21,9 +24,10 @@
             $password = sha1($password);
             $query = "SELECT * FROM member WHERE email = '$email' and password = '$password'";
             $run = mysqli_query($conn,$query);
-            $count = count($run);
+            $result = @(mysqli_num_rows($run));
+           // $count = count($run);
           //  echo $count;
-            if($run)
+            if($result > 0)
             {
                 echo "WELCOME";
                 exit;
