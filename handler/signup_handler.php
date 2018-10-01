@@ -43,7 +43,9 @@
     		{
     			echo "<script>
     			alert('Account Created Successfully');
+                window.location.href='../index.php';
     			</script>";
+                exit;
     		}
     		else
     		{
