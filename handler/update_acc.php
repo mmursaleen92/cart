@@ -1,19 +1,8 @@
 <?php require "../database/db_connection.php" ?>
 <?php
-    session_start();
-    $id = $_SESSION['id'];
-    $query = "SELECT name FROM member WHERE id = '$id'";
-    $run = mysqli_query($conn,$query);
-    $row = mysqli_fetch_array($run);
-    if($run)
-    {
-    	$name = $row['name'];
-    }        
-    else
-    {
-    	die("Somethin Wron Happen :-(");
-    }
-
+    // session_start();
+   $id = $_GET['update'];
+   // print_r($id);exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +21,7 @@
 	<label for="name">
 		Name :
 	</label>
-	<input type="text" name="name" required class="form-control" value="<?php echo $name; ?>">
+	<input type="text" name="name" required class="form-control">
 	<br /><br />
 	<input type="submit" name="update" class="btn btn-warning">
 	</div>
@@ -59,19 +48,23 @@
     	{
     		$query = "UPDATE member SET name = '$name' WHERE id = '$id'";
     		$run = mysqli_query($conn,$query);
-    		// $row = mysqli_fetch_array($run);
     		if($run)
     		{
     			echo "<script>
-    			alert('Update Success');
-    			window.location.href='../admin/index.php';
-    			</script>";
+    		alert('Update successfully');
+    		window.location.href='../member/index.php';
+    		</script>";
+    		exit;
+
     		}
     		else
     		{
-    			die("Something Went Wrong");
+    			die('Update Query Failed'.mysqli_error($conn));
+    			exit;
     		}
+    		
     	}
 
     }
+
 ?>

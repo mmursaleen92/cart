@@ -14,6 +14,7 @@
 ?>
 <?php 
      $query = "SELECT * FROM member WHERE id = '$id'";
+    // print_r($id);exit;
      $run = mysqli_query($conn,$query);      
      $result = mysqli_num_rows($run);
      $row = mysqli_fetch_array($run);
@@ -39,7 +40,7 @@
 <div class="col-md-2"></div>
 <div class="col-md-8">
 <div class="row left">
-<a href="../handler/update_acc.php" class="btn btn-primary">Update Your Account</a>
+<a href="../handler/update_acc.php?update=<?php echo $id; ?>" class="btn btn-primary">Update Your Account</a>
 <a href="#"  class="btn btn-info">Cart <?php  ?></a>
 
 <a href="../handler/logout_handler.php"  class="btn btn-danger">LogOut</a>
@@ -64,6 +65,7 @@
     $run = mysqli_query($conn,$query);
     if($run)
     {
+    	//$status = 0;
     	while($row = mysqli_fetch_array($run))
 		{
 			$id = $row['id'];
@@ -71,6 +73,8 @@
 			$discription = $row['discription'];
 			$image = $row['image'];
 			$price = number_format($row['price']);
+			$status = $row['status'];
+			// echo $status;exit;
 			echo "<tr>";
 			echo "<td> $name </td>";
 			echo "<td> $discription </td>";
@@ -79,9 +83,49 @@
 			<td><img src="../images/<?php echo $image; ?>" height="100" width="100" class="img-responsive"></td>
 			<?php
 			echo "<td> $price </td>";
-			echo "<td><a  class='btn btn-success' name='add'>Add</td>";
-			echo "<td><a href='#' class='btn btn-danger '>Remove</td>";
-			}		
+			?>
+			<?php 
+			if($status == 0)
+			{
+				?>
+			
+			<form method="post" action="">
+				<td><input type="submit" name="add" class="btn btn-success" value="Add"></td>
+				
+ 				<td><input type="submit" name="remove" class="btn btn-danger disabled" value="Remove"></td>
+			</form>
+			<?php } 
+			 
+			else
+			{
+				?>
+				<form method="post" action="">
+				<td><input type="submit" name="add" class="btn btn-success disabled" value="Add"></td>
+				
+ 				<td><input type="submit" name="remove" class="btn btn-danger" value="Remove"></td>
+			</form>
+			
+			
+			
+		<?php	
+			}
+
+			if(isset($_POST['add']))
+			{
+				// $id = $_POST['id'];
+				echo "Hello";exit;
+				echo $id; exit;
+				$order = "UPDATE product SET status = '1' WHERE id = '$id'";
+				// echo $id;exit;
+				$order_take = mysqli_query($conn,$order);
+			}	
+			else
+			{
+				echo "Hy";exit;
+			}
+
+			
+		}	
     }
     else
     {

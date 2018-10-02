@@ -51,6 +51,7 @@
     	$price = $_POST['price'];
     	$image = strtolower($image);
     	$image = str_replace(" ","_",$image);
+    	// $status = 0;
     	if(empty($name))
     	{
     		die("Product Name is Required");
