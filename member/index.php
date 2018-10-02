@@ -20,7 +20,7 @@
 
      if($result > 0)
      {
-        echo $name = $row['name'];       
+        $name = $row['name'];       
 
      }   
 ?>
@@ -33,13 +33,15 @@
 </head>
 <body>
 <center>
-<h1>Hy : <?php echo $name; ?></h1>
+<h1>Hello ! <?php echo $name; ?></h1>
 </center>
 <div class="row" align="right">
 <div class="col-md-2"></div>
 <div class="col-md-8">
 <div class="row left">
-<a href="../handler/update_acc.php" class="btn btn-success">Update Your Account</a>
+<a href="../handler/update_acc.php" class="btn btn-primary">Update Your Account</a>
+<a href="#"  class="btn btn-info">Cart <?php  ?></a>
+
 <a href="../handler/logout_handler.php"  class="btn btn-danger">LogOut</a>
 
 </div>
@@ -52,6 +54,7 @@
 			<th>Product Image</th>
 			<th>Product Price</th>
             <th>Buy</th>
+            <th>Remove</th>
         </tr>
 	</thead>
     <tbody>
@@ -76,11 +79,9 @@
 			<td><img src="../images/<?php echo $image; ?>" height="100" width="100" class="img-responsive"></td>
 			<?php
 			echo "<td> $price </td>";
-			echo "<td><a href='../handler/update_product.php?edit=$id' class='btn btn-warning'>Edit</td>";
-			echo "<td><a href='../handler/delete_product.php?delete=$id' class='btn btn-danger'>Delete</td>";
-
-		}
-		
+			echo "<td><a  class='btn btn-success' name='add'>Add</td>";
+			echo "<td><a href='#' class='btn btn-danger '>Remove</td>";
+			}		
     }
     else
     {

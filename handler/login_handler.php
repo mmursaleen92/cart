@@ -31,15 +31,15 @@
                 session_start();
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['email'] = $row['email']; 
-                if(!$email == "admin@gmail.com")
+                if($email == "admin@gmail.com")
                 {
-                    header("Location:../member/index.php");
-                    exit;                    
+                    header("Location:../admin/index.php");
+                      exit;                                       
                 } 
                 else
                 {
-                    header("Location:../admin/index.php");
-                      exit;                    
+                    header("Location:../member/index.php");
+                    exit;                                         
                 }              
                 
             }

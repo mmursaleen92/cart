@@ -33,7 +33,7 @@
 </head>
 <body>
 <center>
-<h1>Hy : <?php echo $name; ?></h1>
+<h1>Hello ! <?php echo $name; ?></h1>
 </center>
 <div class="row" align="right">
 <div class="col-md-2"></div>
@@ -42,6 +42,7 @@
 
 <a href="../product/add_product.php" class="btn btn-info">Add New Product</a>
 <a href="../handler/update_acc.php" class="btn btn-success">Update Your Account</a>
+<a href="../handler/order_product.php"  class="btn btn-primary">View Order</a>
 <a href="../handler/logout_handler.php"  class="btn btn-danger">LogOut</a>
 
 </div>
